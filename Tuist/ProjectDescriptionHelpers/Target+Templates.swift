@@ -43,7 +43,7 @@ public extension Target {
         entitlements: .relativeToApp("PyeonHaeng.entitlements"),
         scripts: [.swiftFormat, .swiftLint],
         dependencies: dependencies,
-        settings: .settings(base: [:].marketingVersion("2.0.0"))
+        settings: .settings(base: [:].marketingVersion("1.0.0"))
       ),
       Target(
         name: "\(targetName)Tests",
