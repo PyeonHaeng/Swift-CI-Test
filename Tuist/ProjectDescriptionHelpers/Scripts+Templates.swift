@@ -8,7 +8,25 @@
 import Foundation
 import ProjectDescription
 
-private let tuistRootDirectory = ProcessInfo.processInfo.environment["TUIST_ROOT_DIR"] ?? "."
+private let tuistRootDirectory = ProcessInfo.processInfo.environment["TUIST_ROOT_DIR"]
+
+private func swiftFormatCommand() -> String {
+  if let tuistRootDirectory {
+    return "swiftformat --config \(tuistRootDirectory)/swiftformat ."
+  } else {
+    return "swiftformat ."
+  }
+}
+
+
+private func swiftLintCommand() -> String {
+  if let tuistRootDirectory {
+    return "swiftlint --config \(tuistRootDirectory)/.swiftlint.yml"
+  } else {
+    return "swiftlint"
+  }
+}
+
 
 public extension TargetScript {
   static let swiftFormat: Self = .pre(
@@ -20,7 +38,7 @@ public extension TargetScript {
                 echo "Not running Swift Format for Xcode Previews"
                 exit 0;
             fi
-            swiftformat --config \(tuistRootDirectory)/swiftformat .
+            \(swiftFormatCommand())
         else
             echo "warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat"
         fi
@@ -35,7 +53,7 @@ public extension TargetScript {
     if [ "$CONFIGURATION" == "Debug" ]; then
         export PATH="$PATH:/opt/homebrew/bin"
         if which swiftlint > /dev/null; then
-            swiftlint --config "\(tuistRootDirectory)/.swiftlint.yml"
+            \(swiftLintCommand())
         else
             echo "warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint"
         fi
