@@ -8,7 +8,7 @@
 import Foundation
 import ProjectDescription
 
-private let tuistRootDirectory = ProcessInfo.processInfo.environment["TUIST_ROOT_DIR"]!
+private let tuistRootDirectory = ProcessInfo.processInfo.environment["TUIST_ROOT_DIR"] ?? "."
 
 public extension TargetScript {
   static let swiftFormat: Self = .pre(
