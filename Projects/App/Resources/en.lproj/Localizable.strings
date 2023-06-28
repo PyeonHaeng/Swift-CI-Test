@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  PyeonHaeng
+
+  Created by 홍승현 on 2023/06/25.
+  Copyright © 2023 PyeonHaeng. All rights reserved.
+*/
+
+"CFBundleDisplayName" = "PyeonHaeng";
+
+/*  ===== Onboarding ===== */
+"onboarding.hello" = "Hello!";
