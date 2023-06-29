@@ -9,12 +9,19 @@
 import DesignSystem
 import SwiftUI
 
+// MARK: - Test
+
+struct Test {
+  public init() {}
+}
+
 // MARK: - ContentView
 
 struct ContentView: View {
+  @State private var testUUID: UUID = .init()
   var body: some View {
     HStack {
-      Text(PyeonHaengStrings.Onboarding.hello)
+      Text("PyeonHaengStrings.Onboarding.hello")
     }
   }
 }

@@ -3,8 +3,10 @@ generate:
 	TUIST_ROOT_DIR=${PWD} tuist generate
 
 test:
+	tuist clean
 	tuist fetch
-	TUIST_ROOT_DIR=${PWD} tuist test --device "iPhone 14 Pro Max" --os 16.2
+	TUIST_ROOT_DIR=${PWD} tuist test GithubActionScheme --device "iPhone 14 Pro Max" --os 16.4
+
 
 clean:
 	rm -rf **/*.xcodeproj

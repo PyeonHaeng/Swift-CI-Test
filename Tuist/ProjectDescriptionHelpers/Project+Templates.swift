@@ -20,7 +20,7 @@ public extension Project {
       organizationName: "PyeonHaeng",
       options: options,
       packages: packages,
-      settings: .settings(base: settings),
+      settings: .settings(base: settings, configurations: [.debug(name: "Dev"), .debug(name: "ActionTest")]),
       targets: targets,
       schemes: schemes,
       additionalFiles: additionalFiles,

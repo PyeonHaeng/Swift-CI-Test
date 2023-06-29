@@ -1,18 +1,28 @@
 // swiftformat:disable all
 
 import DependencyPlugin
+import EnvironmentPlugin
 import ProjectDescription
 import ProjectDescriptionHelpers
 
 let project = Project(
   name: "DesignSystem",
   organizationName: "PyeonHaeng",
+  options: .options(automaticSchemesOptions: .disabled, disableBundleAccessors: true, disableSynthesizedResourceAccessors: true),
+  settings: .settings(
+    base: [
+      "IPHONEOS_DEPLOYMENT_TARGET": .string("16.4"),
+      "BuildIndependentTargetsInParallel": .string("YES"),
+    ],
+    configurations: [.debug(name: "Dev"), .debug(name: "ActionTest")]
+  ),
   targets: [
     Target(
       name: "DesignSystem",
       platform: .iOS,
       product: .framework,
       bundleId: "com.pyeonhaeng.designsystem",
+      deploymentTarget: .iOS(targetVersion: "16.4", devices: .iphone),
       sources: .sources,
       resources: "Resources/**",
       scripts: [.swiftFormat, .swiftLint]
@@ -22,8 +32,36 @@ let project = Project(
       platform: .iOS,
       product: .unitTests,
       bundleId: "com.pyeonhaeng.designsystemTests",
+      deploymentTarget: .iOS(targetVersion: "16.4", devices: .iphone),
       sources: .unitTests,
       scripts: [.swiftFormat, .swiftLint]
     ),
   ]
+//  schemes: [
+//    Scheme(
+//      name: "Dev",
+//      shared: true,
+//      buildAction: .buildAction(targets: ["\(ProjectEnvironment.default.targetName)"]),
+//      testAction: .targets(
+//        ["\(ProjectEnvironment.default.targetTestName)"],
+//        configuration: .configuration("Dev"),
+//        options: .options(coverage: true)
+//      ),
+//      runAction: .runAction(configuration: .configuration("Dev")),
+//      archiveAction: .archiveAction(configuration: .configuration("Dev")),
+//      profileAction: .profileAction(configuration: .configuration("Dev")),
+//      analyzeAction: .analyzeAction(configuration: .configuration("Dev"))
+//    ),
+//    Scheme(
+//      name: "GithubActionScheme",
+//      shared: true,
+//      buildAction: .buildAction(targets: ["\(ProjectEnvironment.default.targetName)"]),
+//      testAction: .targets(
+//        ["\(ProjectEnvironment.default.targetTestName)"],
+//        configuration: .configuration("ActionTest"),
+//        options: .options(coverage: true)
+//      ),
+//      runAction: .runAction(configuration: .configuration("ActionTest"))
+//    )
+//  ]
 )
