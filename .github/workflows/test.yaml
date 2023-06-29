@@ -18,4 +18,4 @@ jobs:
       - name: Install Tuist
         run: brew install tuist
       - name: Run Tuist build
-        run: tuist build
+        run: tuist build --device "iPhone 14 Pro Max" --os 16.2
