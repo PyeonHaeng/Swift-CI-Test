@@ -20,4 +20,4 @@ jobs:
       - name: Install iOS Simulator
         run: xcrun simctl create 'iPhone 14 Pro Max' com.apple.CoreSimulator.SimDeviceType.iPhone-14-Pro-Max com.apple.CoreSimulator.SimRuntime.iOS-16-2
       - name: Run Tuist build
-        run: tuist build --device "iPhone 14 Pro Max" --os 16.2
+        run: make test
