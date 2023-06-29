@@ -5,7 +5,7 @@ generate:
 test:
 	tuist clean
 	tuist fetch
-	TUIST_ROOT_DIR=${PWD} tuist test GithubActionScheme --device "iPhone 14 Pro"
+	TUIST_ROOT_DIR=${PWD} tuist test GithubActionScheme --device "iPhone 14 Pro" --os 16.2
 
 
 clean:
