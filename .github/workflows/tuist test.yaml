@@ -1,5 +1,4 @@
-# .github/workflows/my-project.yml
-name: My project
+name: Tuist Test
 
 on:
   push:

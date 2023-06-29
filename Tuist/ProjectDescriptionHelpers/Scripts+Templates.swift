@@ -7,6 +7,7 @@
 
 import Foundation
 import ProjectDescription
+import ConfigurationPlugin
 
 private let tuistRootDirectory = ProcessInfo.processInfo.environment["TUIST_ROOT_DIR"]
 
@@ -31,7 +32,7 @@ private func swiftLintCommand() -> String {
 public extension TargetScript {
   static let swiftFormat: Self = .pre(
     script: """
-    if [ "$CONFIGURATION" == "Debug" ]; then
+    if [ "$CONFIGURATION" == "\(ConfigurationName.pyeonHaengDev.rawValue)" ]; then
         export PATH="$PATH:/opt/homebrew/bin"
         if which swiftformat > /dev/null; then
             if [ "${ENABLE_PREVIEWS}" = "YES" ]; then
@@ -50,7 +51,7 @@ public extension TargetScript {
 
   static var swiftLint: Self = .post(
     script: """
-    if [ "$CONFIGURATION" == "Debug" ]; then
+    if [ "$CONFIGURATION" == "\(ConfigurationName.pyeonHaengDev.rawValue)" ]; then
         export PATH="$PATH:/opt/homebrew/bin"
         if which swiftlint > /dev/null; then
             \(swiftLintCommand())

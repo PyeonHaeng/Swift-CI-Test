@@ -5,7 +5,10 @@ generate:
 test:
 	tuist clean
 	tuist fetch
-	TUIST_ROOT_DIR=${PWD} tuist test GithubActionScheme
+	TUIST_ROOT_DIR=${PWD} tuist test GithubAction
+
+build:
+	TUIST_ROOT_DIR=${PWD} tuist build GithubAction
 
 
 clean:

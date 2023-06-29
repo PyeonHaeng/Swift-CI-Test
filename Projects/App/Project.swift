@@ -1,5 +1,6 @@
 import DependencyPlugin
 import EnvironmentPlugin
+import ConfigurationPlugin
 import ProjectDescription
 import ProjectDescriptionHelpers
 
@@ -14,29 +15,29 @@ let project = Project.create(
   targets: targets,
   schemes: [
     Scheme(
-      name: "Dev",
+      name: ConfigurationName.pyeonHaengDev.rawValue,
       shared: true,
       buildAction: .buildAction(targets: ["\(ProjectEnvironment.default.targetName)"]),
       testAction: .targets(
         ["\(ProjectEnvironment.default.targetTestName)"],
-        configuration: .configuration("Dev"),
+        configuration: .pyeonHaengDev,
         options: .options(coverage: true)
       ),
-      runAction: .runAction(configuration: .configuration("Dev")),
-      archiveAction: .archiveAction(configuration: .configuration("Dev")),
-      profileAction: .profileAction(configuration: .configuration("Dev")),
-      analyzeAction: .analyzeAction(configuration: .configuration("Dev"))
+      runAction: .runAction(configuration: .pyeonHaengDev),
+      archiveAction: .archiveAction(configuration: .pyeonHaengDev),
+      profileAction: .profileAction(configuration: .pyeonHaengDev),
+      analyzeAction: .analyzeAction(configuration: .pyeonHaengDev)
     ),
     Scheme(
-      name: "GithubActionScheme",
+      name: ConfigurationName.githubAction.rawValue,
       shared: true,
       buildAction: .buildAction(targets: ["\(ProjectEnvironment.default.targetName)"]),
       testAction: .targets(
         ["\(ProjectEnvironment.default.targetTestName)"],
-        configuration: .configuration("ActionTest"),
+        configuration: .githubAction,
         options: .options(coverage: true)
       ),
-      runAction: .runAction(configuration: .configuration("ActionTest"))
+      runAction: .runAction(configuration: .githubAction)
     ),
   ],
   options: .options(automaticSchemesOptions: .disabled, disableBundleAccessors: true, disableSynthesizedResourceAccessors: true)

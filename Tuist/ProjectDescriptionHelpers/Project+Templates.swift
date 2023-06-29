@@ -1,5 +1,6 @@
 import DependencyPlugin
 import EnvironmentPlugin
+import ConfigurationPlugin
 import ProjectDescription
 
 public extension Project {
@@ -7,12 +8,9 @@ public extension Project {
     name: String,
     targets: [Target],
     schemes: [Scheme] = [],
-    options: Options = .options(disableBundleAccessors: true, disableSynthesizedResourceAccessors: true),
+    options: Options = .options(automaticSchemesOptions: .disabled, disableBundleAccessors: true, disableSynthesizedResourceAccessors: true),
     packages: [Package] = [],
-    settings: SettingsDictionary = [
-      "IPHONEOS_DEPLOYMENT_TARGET": .string("16.4"),
-      "BuildIndependentTargetsInParallel": .string("YES"),
-    ],
+    settings: SettingsDictionary = ProjectEnvironment.default.baseSetting,
     additionalFiles: [FileElement] = []
   ) -> Project {
     Project(
@@ -20,7 +18,13 @@ public extension Project {
       organizationName: "PyeonHaeng",
       options: options,
       packages: packages,
-      settings: .settings(base: settings, configurations: [.debug(name: "Dev"), .debug(name: "ActionTest")]),
+      settings: .settings(
+        base: [
+          "IPHONEOS_DEPLOYMENT_TARGET": .string("16.4"),
+          "BuildIndependentTargetsInParallel": .string("YES"),
+        ].merging(settings) { _, new in new },
+        configurations: [.debug(name: .pyeonHaengDev), .debug(name: .githubAction)]
+      ),
       targets: targets,
       schemes: schemes,
       additionalFiles: additionalFiles,
