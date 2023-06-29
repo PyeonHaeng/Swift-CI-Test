@@ -78,7 +78,7 @@ public extension Target {
   ///   - infoPlist: Feature Module의 infoPlist
   ///   - dependencies: Feature Module의 의존성
   ///   - testDependencies: Feature Module에 만들어지는 Tests에 대한 의존성, `additionalTargets`에 Tests 옵션이 들어갈 때만 유효합니다.
-  ///   - deploymentTarget: 배포 타겟을 설정합니다. 기본값은 `16.0 - iphone`입니다.
+  ///   - deploymentTarget: 배포 타겟을 설정합니다. 기본값은 `16.4 - iphone`입니다.
   static func feature(
     _ feature: Feature,
     additionalTargets: Set<FeatureTarget> = [],

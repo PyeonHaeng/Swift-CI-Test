@@ -21,7 +21,7 @@ public struct ProjectEnvironment {
       targetName: "PyeonHaeng",
       targetTestName: "PyeonHaengTests",
       bundleID: "com.pyeonhaeng",
-      deploymentTarget: .iOS(targetVersion: "16.0", devices: .iphone),
+      deploymentTarget: .iOS(targetVersion: "16.4", devices: .iphone),
       baseSetting: [:]
     )
   }

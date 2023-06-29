@@ -10,7 +10,7 @@ public extension Project {
     options: Options = .options(disableBundleAccessors: true, disableSynthesizedResourceAccessors: true),
     packages: [Package] = [],
     settings: SettingsDictionary = [
-      "IPHONEOS_DEPLOYMENT_TARGET": .string("16.0"),
+      "IPHONEOS_DEPLOYMENT_TARGET": .string("16.4"),
       "BuildIndependentTargetsInParallel": .string("YES"),
     ],
     additionalFiles: [FileElement] = []
