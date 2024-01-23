@@ -16,4 +16,4 @@ jobs:
       - name: Simulator List check
         run: xcrun simctl list devices
       - name: Execute Unit tests
-        run: xcodebuild test -project SwiftCITest.xcodeproj -scheme SwiftCITest -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.2'
+        run: xcodebuild test -project SwiftCITest.xcodeproj -scheme SwiftCITestTests -destination 'platform=iOS Simulator,name=iPhone 15 Pro,OS=17.2'
