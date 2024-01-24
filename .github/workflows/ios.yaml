@@ -1,12 +1,31 @@
-name: iOS starter workflow
+name: iOS CI workflow
 
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+    types: [labeled, opened, synchronize, reopened]
 
 jobs:
+  check-swift-format:
+    name: Check for Possible Changes with SwiftFormat
+    runs-on: macos-latest
+    steps:
+      - name: Code Checkout
+        uses: actions/checkout@v3
+      - name: Install Swiftformat
+        run: brew install swiftformat
+      - name: Run Swiftformat
+        run: swiftformat . --config .swiftformat
+      - name: Check for changes
+        run: |
+          git diff
+          if [[ `git status --porcelain` ]]; then
+            echo "Code was formatted. Failing the job."
+            exit 1
+          fi
+
   build:
     name: Build and Test default scheme using any available iPhone simulator
     runs-on: macos-13

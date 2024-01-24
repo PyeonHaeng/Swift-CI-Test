@@ -7,6 +7,7 @@
 --importgrouping alpha
 --enable acronyms
 --acronyms "URL, ID, UUID, CVS"
+--emptyBraces "linebreak"
 --enable blankLineAfterImports
 --enable blankLinesAroundMark
 --enable blockComments
