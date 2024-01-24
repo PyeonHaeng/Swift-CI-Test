@@ -1,6 +1,6 @@
 <!-- 아래는 편행 로고가 들어갈 예정입니다. -->
 <!-- <p align=center><image src="" height="256" /></p> -->
-
+awoidjawojid
 <h1 align="center">편행</h1>
 
 <p align="center">
